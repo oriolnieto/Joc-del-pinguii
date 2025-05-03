@@ -9,6 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 
@@ -26,44 +29,25 @@ public class pantallaLoginController {
     @FXML private Button registerButton;
 
     @FXML
-    private void initialize() {
-        // This method is called automatically after the FXML is loaded
-        // You can set initial values or add listeners here
-        System.out.println("pantallaPrincipalController initialized");
+    public void switchRegistro(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/pantallaRegistro.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Joc del Pingüí");
+        stage.show();
     }
 
-   
     @FXML
-    private void handleLogin(ActionEvent event) {
+    private void handleLogin(ActionEvent event) throws IOException {
         String username = userField.getText();
         String password = passField.getText();
 
-        System.out.println("Login pressed: " + username + " / " + password);
 
-        // Basic check (just for demo, replace with real login logic)
-        if (!username.isEmpty() && !password.isEmpty()) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pantallaJuego.fxml"));
-                Parent pantallaJuegoRoot = loader.load();
-
-                Scene pantallaJuegoScene = new Scene(pantallaJuegoRoot);
-
-                // Get the current stage using the event
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(pantallaJuegoScene);
-                stage.setTitle("Pantalla de Juego");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("Please. Enter user and password.");
-        }
+        Parent root = FXMLLoader.load(getClass().getResource("/pantallaMenu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Joc del Pingüí");
+        stage.show();
     }
 
-
-    @FXML
-    private void handleRegister() {
-        System.out.println("Register pressed");
-        // TODO
-    }
 }

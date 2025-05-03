@@ -7,8 +7,7 @@
   This file is available and licensed under the following license:
 
   Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions
-  are met:
+  modification, are permitted provided that the following conditions are met:
 
   - Redistributions of source code must retain the above copyright
     notice, this list of conditions and the following disclaimer.
@@ -38,17 +37,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.pantallaMenuController">
    <children>
-      <Button layoutX="32.0" layoutY="234.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="141.0" text="Salir" />
-      <Button layoutX="32.0" layoutY="181.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="141.0" text="Nueva Partida" />
+      <Button layoutX="32.0" layoutY="234.0" mnemonicParsing="false" onAction="#botoSortir" prefHeight="37.0" prefWidth="141.0" text="Salir" />
+      
+      <Button layoutX="32.0" layoutY="181.0" mnemonicParsing="false" onAction="#botoNovaPartida" prefHeight="37.0" prefWidth="141.0" text="Nueva Partida" />
+      
       <Button layoutX="32.0" layoutY="129.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="141.0" text="Cargar Partida" />
+      
       <ImageView fitHeight="94.0" fitWidth="179.0" layoutX="13.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@LogoJoc.png" />
          </image>
       </ImageView>
+      
       <ListView layoutX="202.0" layoutY="-5.0" prefHeight="406.0" prefWidth="399.0" />
    </children>
 </AnchorPane>
