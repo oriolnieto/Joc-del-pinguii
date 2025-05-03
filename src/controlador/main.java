@@ -11,7 +11,7 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 public class main extends Application  {
-	private static String linkBBDD = "jdbc:oracle:thin:@//192.168.3.26:1521/XEPDB2";
+	private static String linkBBDD = "jdbc:oracle:thin:@//oracle.ilerna.com:1521/XEPDB2";
 	private static String username = "DM2425_PIN_GRUP03";
 	private static String password = "AAANT03";
 //aa
@@ -40,7 +40,7 @@ public class main extends Application  {
 			System.out.println("Error en las credencials o en la URL " + e);
 		}
 
-		System.out.println("Connexió efectuada a la base de dades.");
+		System.out.println("Connexió efectuada a la base de dades. HOLA HOLA HOLA");
 
 		return con;
 	}
