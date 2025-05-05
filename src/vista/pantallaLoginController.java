@@ -11,6 +11,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -39,15 +44,33 @@ public class pantallaLoginController {
 
     @FXML
     private void handleLogin(ActionEvent event) throws IOException {
-        String username = userField.getText();
-        String password = passField.getText();
+    	String usuario = userField.getText();
+    	String contrasena = passField.getText();
 
+    	Connection con = null;
+    	Statement st = null;
+    	ResultSet rs = null;
 
-        Parent root = FXMLLoader.load(getClass().getResource("/pantallaMenu.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Joc del Pingüí");
-        stage.show();
-    }
+    	try {
+    	    con = DriverManager.getConnection( "jdbc:oracle:thin:@//oracle.ilerna.com:1521/XEPDB2", "DM2425_PIN_GRUP03", "AAANT03");
 
+    	    st = con.createStatement();
+    	    String sql = "SELECT * FROM JUGADORS WHERE NICKNAME = '" + usuario + "' AND CONTRASENYA = '" + contrasena + "'";
+    	    rs = st.executeQuery(sql);
+
+    	    if (rs.next()) {
+    	    	Parent root = FXMLLoader.load(getClass().getResource("/pantallaMenu.fxml"));
+    	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	        stage.setScene(new Scene(root));
+    	        stage.setTitle("Joc del Pingüí");
+    	        stage.show();
+    	        System.out.println("Acceso Garantido");
+    	    } else {
+    	        System.out.println("Credenciales Incorrectas");
+    	    }
+
+    	} catch (SQLException e) {
+    	    System.out.println("Ha habido un error en el acceso " + e.getMessage());
+    	}
+}
 }
