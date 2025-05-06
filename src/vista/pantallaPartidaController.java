@@ -41,17 +41,12 @@ public class pantallaPartidaController {
         eventos.setText("Empezo el Juego!");
     }
 
-
-    @FXML
-    private void handleLoadGame() {
-        System.out.println("Loaded game.");
-        // TODO
-    }
-
-    @FXML
-    private void handleQuitGame() {
-        System.out.println("Exit...");
-        // TODO
+    private void botoGuardar() {
+    	Random rand = new Random();
+    	int diceResult = rand.nextInt(3)+1;  
+    	
+    	moveP1(diceResult);
+    	eventos.setText("Se ha usado un dado lento! Ha salido: " + diceResult);
     }
 
     @FXML
@@ -86,7 +81,7 @@ public class pantallaPartidaController {
     @FXML
     private void handleRapido() {
     	Random rand = new Random();
-        int diceResult = rand.nextInt(3) + 1;
+        int diceResult = rand.nextInt(6) + 5;
 
 
     	moveP1(diceResult);
@@ -96,7 +91,7 @@ public class pantallaPartidaController {
     @FXML
     private void handleLento() {
     	Random rand = new Random();
-    	int diceResult = rand.nextInt(4) + 3;  
+    	int diceResult = rand.nextInt(3)+1;  
     	
     	moveP1(diceResult);
     	eventos.setText("Se ha usado un dado lento! Ha salido: " + diceResult);
@@ -105,7 +100,7 @@ public class pantallaPartidaController {
     @FXML
     private void handlePeces() {
         System.out.println("Fish.");
-        // TODO
+        
     }
 
     @FXML

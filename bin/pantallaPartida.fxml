@@ -101,12 +101,12 @@
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="rapido1" layoutX="266.0" layoutY="103.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="147.0" text="Usar">
+                              <Button fx:id="lento" layoutX="266.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleLento" prefHeight="39.0" prefWidth="147.0" text="Usar">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="rapido11" layoutX="479.0" layoutY="103.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="147.0" text="Usar">
+                              <Button fx:id="peces" layoutX="479.0" layoutY="103.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="147.0" text="Usar">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -125,7 +125,7 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button layoutX="13.0" layoutY="147.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="274.0" text="Guardar Partida">
+                        <Button fx:id="guardar" layoutX="13.0" layoutY="147.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="274.0" text="Guardar Partida">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -170,27 +170,27 @@
                         <Font size="30.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
                      <font>
                         <Font size="30.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="10.0" />
+                        <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </Text>
-                  <Circle fx:id="P1" fill="BLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="P1" fill="#00a0ff" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></Circle>
-                  <Circle fx:id="P2" fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="P2" fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin></Circle>
-                  <Circle fx:id="P3" fill="GREEN" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="P3" fill="GREEN" radius="15.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                      <GridPane.margin>
                         <Insets left="80.0" />
                      </GridPane.margin></Circle>
-                  <Circle fx:id="P4" fill="YELLOW" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="P4" fill="YELLOW" radius="15.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                      <GridPane.margin>
                         <Insets left="120.0" />
                      </GridPane.margin></Circle>
