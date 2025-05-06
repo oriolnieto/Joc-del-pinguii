@@ -40,7 +40,7 @@ public class main extends Application  {
 			System.out.println("Error en las credencials o en la URL " + e);
 		}
 
-		System.out.println("Connexió efectuada a la base de dades. HOLA HOLA HOLA");
+		System.out.println("Connexió efectuada a la base de dades.");
 
 		return con;
 	}

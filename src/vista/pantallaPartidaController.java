@@ -11,18 +11,13 @@ import javafx.scene.text.Text;
 
 public class pantallaPartidaController {
 
-    // Menu items
-    @FXML private MenuItem newGame;
-    @FXML private MenuItem saveGame;
-    @FXML private MenuItem loadGame;
-    @FXML private MenuItem quitGame;
 
-    // Buttons
     @FXML private Button dado;
     @FXML private Button rapido;
     @FXML private Button lento;
     @FXML private Button peces;
     @FXML private Button nieve;
+    @FXML private Button guardar;
 
     // Texts
     @FXML private Text dadoResultText;
@@ -32,37 +27,20 @@ public class pantallaPartidaController {
     @FXML private Text nieve_t;
     @FXML private Text eventos;
 
-    // Game board and player pieces
     @FXML private GridPane tablero;
     @FXML private Circle P1;
     @FXML private Circle P2;
     @FXML private Circle P3;
     @FXML private Circle P4;
     
-    //ONLY FOR TESTING!!!
     private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
     private final int COLUMNS = 5;
 
     @FXML
     private void initialize() {
-        // This method is called automatically after the FXML is loaded
-        // You can set initial values or add listeners here
-        eventos.setText("¡El juego ha comenzado!");
+        eventos.setText("Empezo el Juego!");
     }
 
-    // Button and menu actions
-
-    @FXML
-    private void handleNewGame() {
-        System.out.println("New game.");
-        // TODO
-    }
-
-    @FXML
-    private void handleSaveGame() {
-        System.out.println("Saved game.");
-        // TODO
-    }
 
     @FXML
     private void handleLoadGame() {
@@ -107,14 +85,22 @@ public class pantallaPartidaController {
 
     @FXML
     private void handleRapido() {
-        System.out.println("Fast.");
-        // TODO
+    	Random rand = new Random();
+        int diceResult = rand.nextInt(3) + 1;
+
+        // Update the Text 
+        dadoResultText.setText("Ha salido: " + diceResult);
+    	moveP1(diceResult);
     }
 
     @FXML
     private void handleLento() {
-        System.out.println("Slow.");
-        // TODO
+    	Random rand = new Random();
+    	int diceResult = rand.nextInt(4) + 3;  
+
+    	dadoResultText.setText("Ha salido: " + diceResult);
+    	moveP1(diceResult);
+
     }
 
     @FXML
