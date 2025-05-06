@@ -42,8 +42,8 @@ public class pantallaRegistroController {
             con = DriverManager.getConnection("jdbc:oracle:thin:@//oracle.ilerna.com:1521/XEPDB2", "DM2425_PIN_GRUP03", "AAANT03");
 
             Statement st = con.createStatement();
-            String sql = "INSERT INTO JUGADORS (nickname, contrasenya, num_partida) " + "VALUES ('" + usuario + "', '" + contrasena + "', 0)";
-            st.execute(sql);
+            String jugadors = "INSERT INTO JUGADORS (nickname, contrasenya, num_partida) " + "VALUES ('" + usuario + "', '" + contrasena + "', 0)";
+            st.execute(jugadors);
 
             System.out.println("Registro realizado correctamente.");
         } catch (SQLException e) {
