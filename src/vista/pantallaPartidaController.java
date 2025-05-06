@@ -1,5 +1,10 @@
 package vista;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Random;
 
 import javafx.event.ActionEvent;
@@ -77,24 +82,87 @@ public class pantallaPartidaController {
         GridPane.setRowIndex(P1, row);
         GridPane.setColumnIndex(P1, col);
     }
-
+    
     @FXML
-    private void handleRapido() {
-    	Random rand = new Random();
-        int diceResult = rand.nextInt(6) + 5;
+    private int obtenerValorDadoRapido() {
+        int valor = 0;
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
 
+        try {
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@//oracle.ilerna.com:1521/XEPDB2", "DM2425_PIN_GRUP03", "AAANT03");
 
-    	moveP1(diceResult);
-    	eventos.setText("Se ha usado un dado rápido! Ha salido: " + diceResult);
+            stmt = conn.createStatement();
+            String sql = "SELECT DAUS_RAPIDS FROM INVENTARI";
+
+            rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                valor = rs.getInt("DAUS_RAPIDS"); 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+
+        return valor;
+    }
+    
+    @FXML
+    private int obtenerValorDadoLento() {
+        int valor = 0;
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@//oracle.ilerna.com:1521/XEPDB2", "DM2425_PIN_GRUP03", "AAANT03");
+
+            stmt = conn.createStatement();
+            String sql = "SELECT DAUS_LENTS FROM INVENTARI";
+
+            rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                valor = rs.getInt("DAUS_LENTS"); 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+
+        return valor;
     }
 
     @FXML
+    private void handleRapido() {
+    	
+    	int valor = obtenerValorDadoRapido(); 
+    	
+    	if(valor > 0) {
+    	Random rand = new Random();
+        int diceResult = rand.nextInt(6) + 5;
+        moveP1(diceResult);
+    	eventos.setText("Se ha usado un dado rápido! Ha salido: " + diceResult);
+    	}
+    	else {
+    		eventos.setText("No tienes suficientes dados rápidos!");
+    	}
+    }
+    
+
+    @FXML
     private void handleLento() {
+    	int valor = obtenerValorDadoRapido(); 
+    	
+    	if(valor > 0) {
     	Random rand = new Random();
     	int diceResult = rand.nextInt(3)+1;  
-    	
     	moveP1(diceResult);
     	eventos.setText("Se ha usado un dado lento! Ha salido: " + diceResult);
+    	}
+    	else {
+    		eventos.setText("No tienes suficientes dados lentos!");
+    	}
     }
 
     @FXML
@@ -107,5 +175,9 @@ public class pantallaPartidaController {
     private void handleNieve() {
         System.out.println("Snow.");
         // TODO
+    }
+    
+    public static void main(String args[]) {
+    	
     }
 }
