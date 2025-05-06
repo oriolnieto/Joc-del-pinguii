@@ -88,19 +88,18 @@ public class pantallaPartidaController {
     	Random rand = new Random();
         int diceResult = rand.nextInt(3) + 1;
 
-        // Update the Text 
-        dadoResultText.setText("Ha salido: " + diceResult);
+
     	moveP1(diceResult);
+    	eventos.setText("Se ha usado un dado rápido! Ha salido: " + diceResult);
     }
 
     @FXML
     private void handleLento() {
     	Random rand = new Random();
     	int diceResult = rand.nextInt(4) + 3;  
-
-    	dadoResultText.setText("Ha salido: " + diceResult);
+    	
     	moveP1(diceResult);
-
+    	eventos.setText("Se ha usado un dado lento! Ha salido: " + diceResult);
     }
 
     @FXML
