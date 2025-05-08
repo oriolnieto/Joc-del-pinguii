@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,16 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import model.Casella;
+import model.CasellaBuida;
+import model.Event;
+import model.Forat;
+import model.Jugador;
+import model.Os;
+import model.Taulell;
+import model.Trineu;
+ 
+
 
 public class pantallaPartidaController {
 
@@ -40,10 +51,36 @@ public class pantallaPartidaController {
     
     private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
     private final int COLUMNS = 5;
-
+    
+    
+    private void generarTaulell (Taulell t) {
+    	Random rand = new Random();
+    	t.getCasillas().add(new CasellaBuida (0, new ArrayList<Jugador>()));
+   
+    	for(int i = 1; i < 48; i++) {
+    		int numRand = rand.nextInt(4)+1;
+    		if(numRand == 1) {
+    			t.getCasillas().add(new Os (i, new ArrayList<Jugador>()));
+    			
+    		}
+    		else if(numRand == 2) {
+    			t.getCasillas().add(new Forat (i, new ArrayList<Jugador>()));
+    		}
+    		else if(numRand == 3) {
+    			t.getCasillas().add(new Trineu (i, new ArrayList<Jugador>()));
+    		}
+    		else if(numRand == 4) {
+    			t.getCasillas().add(new Event (i, new ArrayList<Jugador>(), "Peix"));
+    		}
+    	}
+    	t.getCasillas().add(new CasellaBuida (49, new ArrayList<Jugador>()));
+    	
+    }
+    
     @FXML
     private void initialize() {
         eventos.setText("Empezo el Juego!");
+        
     }
 
     private void botoGuardar() {
