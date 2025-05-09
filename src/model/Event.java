@@ -62,7 +62,7 @@ public class Event extends Casella{
 			int numeroRandom2 = rand.nextInt(3);
 			switch(numeroRandom2) {
 			case 0:
-				inv.getLlista().add(new Item ("", Peix.getCantidad())); // Afegir Peix
+				inv.getLlista().add(new Item ("Peix", Peix.getCantidad())); // Afegir Peix
 			    break;
 			  case 1:
 				  inv.getLlista().add(new Item ("Boles", Boles.getCantidad()));
