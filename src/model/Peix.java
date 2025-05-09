@@ -8,8 +8,13 @@ public class Peix extends Event{
         super(posicio, jugadorsActuals, tipoEvent, cantidad);
     }
 
+    @Override
     public void realitzarAccio() {
-        setCantidad(getCantidad()+1);
+    	if(getCantidad() < 2) {
+            setCantidad(getCantidad()+1);
+    	}else {
+    		System.out.println("Ja tens massa peixos!!");
+    	}
     }
 
 }

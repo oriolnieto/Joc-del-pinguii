@@ -9,8 +9,12 @@ public class DauLent extends Event{
 		
 	}
 	
-	@Override
-	public void realitzarAccio() {
-		setCantidad(getCantidad()+1);
-	}
+	  @Override
+	    public void realitzarAccio() {
+	    	if(DauRapid.getCantidad() + DauLent.getCantidad() < 3) {
+	            setCantidad(getCantidad()+1);
+	    	}else {
+	    		System.out.println("Ja tens massa daus!!");
+	    	}
+	    }
 	}
