@@ -16,8 +16,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import model.Casella;
 import model.CasellaBuida;
-import model.DauLent;
-import model.DauRapid;
+//import model.DauLent;
+//import model.DauRapid;
 import model.Event;
 import model.Forat;
 import model.Inventari;
@@ -159,19 +159,22 @@ public class pantallaPartidaController {
 	}
 
 	@FXML
-	private void handleLento(Inventari i) {
+	private void handleLento(Inventari inv) {
 		int cantitat2 = 0;
-
-		if (valor > 0) {
-			Random rand = new Random();
-			int diceResult = rand.nextInt(3) + 1;
-			moveP1(diceResult);
-			eventos.setText("Se ha usado un dado lento! Ha salido: " + diceResult);
-			dl.setCantidad(valor - 1);
-		} else {
-			eventos.setText("No tienes suficientes dados lentos!");
+		for(int i = 0; i > inv.getLlista().size(); i++) {
+			if (inv.getLlista().get(i).getNom().equals("Dau Rapid")) {
+				if (inv.getLlista().get(i).getCantitat() > 0) {
+					Random rand = new Random();
+					int diceResult = rand.nextInt(3) + 1;
+					moveP1(diceResult);
+					eventos.setText("Se ha usado un dado lento! Ha salido: " + diceResult);
+					inv.getLlista().get(i).setCantitat(inv.getLlista().get(i).getCantitat() - 1);
+				} else {
+					eventos.setText("No tienes suficientes dados lentos!");
+			}
 		}
 	}
+}
 
 	@FXML
 	private void handlePeces() {
