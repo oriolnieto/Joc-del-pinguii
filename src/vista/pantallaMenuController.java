@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class pantallaMenuController {
-    
+    public boolean carregar = false;
 	 public void botoSortir(ActionEvent event) throws IOException {
 
          Parent root = FXMLLoader.load(getClass().getResource("/pantallaLogin.fxml"));
@@ -32,5 +32,9 @@ public class pantallaMenuController {
           stage.setScene(new Scene(root));
           stage.setTitle("Joc del Pingüí");
           stage.show();
+    }
+    public void botoCarregarPartida (ActionEvent event) throws IOException {
+    	carregar = true;
+    	
     }
 }
