@@ -72,10 +72,13 @@ public class pantallaPartidaController {
     			t.getCasillas().add(new Trineu (i, new ArrayList<Jugador>()));
     		}
     		else if(numRand == 4) {
-    			t.getCasillas().add(new Event (i, new ArrayList<Jugador>(), "Peix"));
     		}
     	}
     	t.getCasillas().add(new CasellaBuida (49, new ArrayList<Jugador>()));
+    	
+    }
+    
+    private void pintarTaulell(Taulell t) {
     	
     }
     

@@ -6,7 +6,7 @@ import java.util.Random;
 public class Event extends Casella{
 
 	private String tipoEvent;
-	private Inventari inv;
+	//private Inventari inv;
 	private static int cantidad;
 	
 	public String getTipoEvent() {
@@ -62,16 +62,58 @@ public class Event extends Casella{
 			int numeroRandom2 = rand.nextInt(3);
 			switch(numeroRandom2) {
 			case 0:
-				inv.getLlista().add(new Item ("Peix", Peix.getCantidad())); // Afegir Peix
+				for(Jugador j : this.jugadorsActuals) {
+					if(j instanceof Pingui) {
+						Pingui p = (Pingui)j;
+						Inventari i = p.getInv();
+						i.getLlista().add(new Item ("Peix", Peix.getCantidad())); // Afegir Peix
+					}
+				}
+				
 			    break;
 			  case 1:
-				  inv.getLlista().add(new Item ("Boles", Boles.getCantidad()));
+				  for(Jugador j : this.jugadorsActuals) {
+						if(j instanceof Pingui) {
+							Pingui p = (Pingui)j;
+							Inventari i = p.getInv();
+				  i.getLlista().add(new Item ("Boles", Boles.getCantidad()));
 			    break;
 			  case 2:
 				  inv.getLlista().add(new Item ("Dau Lent", DauLent.getCantidad())); // Afegir Dau Lent
 			  break;
 			}
 		}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		else {
 		inv.getLlista().add(new Item ("Dau Rapid", DauLent.getCantidad())); // Afegir Dau Ràpid.
 		}
