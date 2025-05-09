@@ -16,28 +16,52 @@ public class Event extends Casella {
 
         int numeroRandom = rand.nextInt(101); // From 0 to 100
 
+        for (Jugador j : this.jugadorsActuals) {
+            if (j instanceof Pingui) {
+                Pingui p = (Pingui) j;
+                Inventari i = p.getInv();
+                ArrayList<Item> llista = i.getLlista();
 
-            for (Jugador j : this.jugadorsActuals) {
-                if (j instanceof Pingui) {
-                    Pingui p = (Pingui) j;
-                    Inventari i = p.getInv();
+                if (numeroEvent == 0) {
+                    int count = 0;
+                    for (Item it : llista) {
+                        if (it.getNom().equals("Peix")) {
+                            count = it.getCantitat();
+                        }
+                    }
+                    if (count < 2) llista.add(new Item("Peix", 1));
+                }
 
-                    switch (numeroEvent) {
-                        case 0: 
-                            i.getLlista().add(new Item("Peix", 1)); 
-                            break;
-                        case 1: 
-                            i.getLlista().add(new Item("Boles", rand.nextInt(3)+1)); 
-                            break;
-                        case 2:
-                            i.getLlista().add(new Item("Dau Rapid", 1));
-                            break;
-                        case 3:
-                            i.getLlista().add(new Item("Dau Lent", 1));
-                            break;
+                else if (numeroEvent == 1) {
+                    int count = 0;
+                    for (Item it : llista) {
+                        if (it.getNom().equals("Boles")) {
+                            count += it.getCantitat();
+                        }
+                    }
+                    int afegir = rand.nextInt(3) + 1;
+                    if (count < 6) {
+                        llista.add(new Item("Boles", afegir));
+                    }
+                }
+
+                else if (numeroEvent == 2 || numeroEvent == 3) {
+                    int count = 0;
+                    for (Item it : llista) {
+                        if (it.getNom().equals("Dau Rapid") || it.getNom().equals("Dau Lent")) {
+                            count += it.getCantitat();
+                        }
+                    }
+
+                    if (count < 3) {
+                        if (numeroEvent == 2) {
+                            llista.add(new Item("Dau Rapid", 1));
+                        } else {
+                            llista.add(new Item("Dau Lent", 1));
+                        }
                     }
                 }
             }
         }
-    
+    }        
 }
