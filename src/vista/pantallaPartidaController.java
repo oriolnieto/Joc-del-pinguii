@@ -134,7 +134,7 @@ public class pantallaPartidaController {
     @FXML
     private int handleRapido(DauRapid dr) {
     	
-    	int valor = dr.getCantidad();
+      	int valor = dr.getCantidad();
     	Connection conn = null;
     	Statement stmt = null;
     	ResultSet rs = null;
@@ -155,8 +155,8 @@ public class pantallaPartidaController {
     		stmt = conn.createStatement();
     		String sql = "SELECT DAUS_RAPIDS FROM INVENTARI";
     	}
-    	catch {
-    		
+    	catch(SQLException e) {
+    		e.printStackTrace();
     	}
     	
     	return valor;
