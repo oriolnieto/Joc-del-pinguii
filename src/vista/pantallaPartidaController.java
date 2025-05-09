@@ -76,7 +76,7 @@ public class pantallaPartidaController {
 		Random rand = new Random();
 		t.getCasillas().add(new CasellaBuida(0, new ArrayList<Jugador>()));
 
-		for (int i = 1; i < 48; i++) {
+		for (int i = 1; i < 49; i++) {
 			int numRand = rand.nextInt(4) + 1;
 			if (numRand == 1) {
 				t.getCasillas().add(new Os(i, new ArrayList<Jugador>()));
@@ -86,13 +86,14 @@ public class pantallaPartidaController {
 			} else if (numRand == 3) {
 				t.getCasillas().add(new Trineu(i, new ArrayList<Jugador>()));
 			} else if (numRand == 4) {
+				t.getCasillas().add(new Event(i, new ArrayList<Jugador>()));
 			}
 		}
-		t.getCasillas().add(new CasellaBuida(49, new ArrayList<Jugador>()));
+		t.getCasillas().add(new CasellaBuida(50, new ArrayList<Jugador>()));
 
 	}
 
-	private void pintarTaulell(Taulell t) {
+	private void textTaulell(Taulell t) {
 		for (int i = 0; i < t.getCasillas().size(); i++) {
 			Casella casella = t.getCasillas().get(i);
 			String tipus = casella.getClass().getSimpleName();
@@ -115,12 +116,12 @@ public class pantallaPartidaController {
 	    Pingui jugadorActual = new Pingui(0, "Jugador 1", "Blau"); // Crea un jugador, puedes cambiar el nombre si lo necesitas.
 	    jugadors.add(jugadorActual);
 
-	    // Crear el objeto Taulell con la lista de casillas, jugadores, rondas (0 en este caso), y el jugador actual
+	    
 	    Taulell t = new Taulell(casillas, jugadors, 0, jugadorActual);
 
 	    // Ahora puedes llamar a los métodos de generar y pintar el tablero
 	    generarTaulell(t);
-	    pintarTaulell(t);
+	    textTaulell(t);
 	}
 
 	private void botoGuardar() {
