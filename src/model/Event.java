@@ -30,7 +30,7 @@ public class Event extends Casella {
                             i.getLlista().add(new Item("Boles", rand.nextInt(3)+1)); 
                             break;
                         case 2:
-                            i.getLlista().add(new Item("Dau Ràpid", 1));
+                            i.getLlista().add(new Item("Dau Rapid", 1));
                             break;
                         case 3:
                             i.getLlista().add(new Item("Dau Lent", 1));
