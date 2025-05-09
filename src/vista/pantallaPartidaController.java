@@ -167,7 +167,7 @@ public class pantallaPartidaController {
 	}
 
 	@FXML
-	private void handleRapido(Inventari inv, Item it) {
+	private void handleRapido(Inventari inv) {
 		for (int i = 0; i < inv.getLlista().size(); i++) {
 			if (inv.getLlista().get(i).getNom().equals("Dau Rapid")) {
 				if (inv.getLlista().get(i).getCantitat() > 0) {
