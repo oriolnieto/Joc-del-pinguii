@@ -7,8 +7,25 @@ public class Event extends Casella{
 
 	private String tipoEvent;
 	private Inventari inv;
+	private static int cantidad;
 	
-	public Event(int posicio, ArrayList<Jugador> jugadorsActuals, String tipoEvent) {
+	public String getTipoEvent() {
+		return tipoEvent;
+	}
+
+	public void setTipoEvent(String tipoEvent) {
+		this.tipoEvent = tipoEvent;
+	}
+
+	public static int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public Event(int posicio, ArrayList<Jugador> jugadorsActuals, String tipoEvent, int cantidad) {
 		super(posicio, jugadorsActuals);
 		this.tipoEvent = tipoEvent;
 	}
@@ -45,18 +62,18 @@ public class Event extends Casella{
 			int numeroRandom2 = rand.nextInt(3);
 			switch(numeroRandom2) {
 			case 0:
-				inv.getLlista().add(null); // Afegir Peix
+				inv.getLlista().add(new Item ("", Peix.getCantidad())); // Afegir Peix
 			    break;
 			  case 1:
-				  inv.getLlista().add(null); // Afegir Boles de Neu 1-3
+				  inv.getLlista().add(new Item ("Boles", Boles.getCantidad()));
 			    break;
 			  case 2:
-				  inv.getLlista().add(null); // Afegir Dau Lent
-			    break;
+				  inv.getLlista().add(new Item ("Dau Lent", DauLent.getCantidad())); // Afegir Dau Lent
+			  break;
 			}
 		}
 		else {
-		inv.getLlista().add(null); // Afegir Dau Ràpid.
+		inv.getLlista().add(new Item ("Dau Rapid", DauLent.getCantidad())); // Afegir Dau Ràpid.
 		}
 		
 		
