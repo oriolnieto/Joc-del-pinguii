@@ -12,9 +12,8 @@ public class Event extends Casella {
     @Override
     public void realitzarAccio() {
         Random rand = new Random();
-        int numeroEvent = rand.nextInt(4); // Choose an event type
+        int numeroEvent = rand.nextInt(4);
 
-        int numeroRandom = rand.nextInt(101); // From 0 to 100
 
         for (Jugador j : this.jugadorsActuals) {
             if (j instanceof Pingui) {
@@ -29,7 +28,8 @@ public class Event extends Casella {
                             count = it.getCantitat();
                         }
                     }
-                    if (count < 2) llista.add(new Item("Peix", 1));
+                    if (count < 2) 
+                    llista.add(new Item("Peix", 1));
                 }
 
                 else if (numeroEvent == 1) {
