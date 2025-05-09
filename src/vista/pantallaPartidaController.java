@@ -92,7 +92,20 @@ public class pantallaPartidaController {
 	}
 
 	private void pintarTaulell(Taulell t) {
-
+	    final int COLUMNS=5;
+	    
+	    for(int i=0;i<t.getCasillas().size();i++) {
+	    	Casella casella=t.getCasillas().get(i);
+	    	String tipus=casella.getClass().getSimpleName();
+	   
+	    	int row=i/COLUMNS;
+	    	int col =i%COLUMNS;
+	   
+	    	Text tx=new Text(tipus);
+	   
+	    	GridPane.setRowIndex(tx, row);
+	    	GridPane.setRowIndex(tx, col);
+	    }
 	}
 
 	@FXML
