@@ -97,17 +97,25 @@ public class pantallaPartidaController {
 		for (int i = 0; i < t.getCasillas().size(); i++) {
 			Casella casella = t.getCasillas().get(i);
 			String tipus = casella.getClass().getSimpleName();
+			
+			if (tipus.equals("CasellaBuida")) {
+	            continue;
+	        }
 
 			int row = i / COLUMNS;
 			int col = i % COLUMNS;
 
 			Text tx = new Text(tipus);
+		     tx.setStyle("-fx-font-size: 15px; -fx-font-weight: bold;"); 
+		        tx.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+		        tx.setWrappingWidth(250);
+		       
 			GridPane.setRowIndex(tx, row);
 			GridPane.setColumnIndex(tx, col);
 			tablero.getChildren().add(tx);
+
 		}
 	}
-//aaaa
 	@FXML
 	private void initialize() {
 		eventos.setText("Empezo el Juego!");
