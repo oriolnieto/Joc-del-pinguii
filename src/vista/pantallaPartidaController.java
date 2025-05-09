@@ -16,8 +16,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import model.Casella;
 import model.CasellaBuida;
-//import model.DauLent;
-//import model.DauRapid;
 import model.Event;
 import model.Forat;
 import model.Inventari;
@@ -121,13 +119,12 @@ public class pantallaPartidaController {
 		eventos.setText("Empezo el Juego!");
 		ArrayList<Casella> casillas = new ArrayList<>();
 	    ArrayList<Jugador> jugadors = new ArrayList<>();
-	    Pingui jugadorActual = new Pingui(0, "Jugador 1", "Blau"); // Crea un jugador, puedes cambiar el nombre si lo necesitas.
+	    Pingui jugadorActual = new Pingui(0, "Jugador 1", "Blau");
 	    jugadors.add(jugadorActual);
 
 	    
 	    Taulell t = new Taulell(casillas, jugadors, 0, jugadorActual);
 
-	    // Ahora puedes llamar a los métodos de generar y pintar el tablero
 	    generarTaulell(t);
 	    textTaulell(t);
 	}
