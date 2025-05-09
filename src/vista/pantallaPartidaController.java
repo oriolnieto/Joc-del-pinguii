@@ -107,7 +107,7 @@ public class pantallaPartidaController {
 	    	GridPane.setRowIndex(tx, col);
 	    }
 	}
-
+//aaaa
 	@FXML
 	private void initialize() {
 		eventos.setText("Empezo el Juego!");
