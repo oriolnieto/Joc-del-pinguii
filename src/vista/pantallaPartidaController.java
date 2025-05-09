@@ -68,6 +68,7 @@ public class pantallaPartidaController {
 	@FXML
 	private Circle P4;
 
+
 	private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
 	private final int COLUMNS = 5;
 
@@ -92,26 +93,34 @@ public class pantallaPartidaController {
 	}
 
 	private void pintarTaulell(Taulell t) {
-	    final int COLUMNS=5;
-	    
-	    for(int i=0;i<t.getCasillas().size();i++) {
-	    	Casella casella=t.getCasillas().get(i);
-	    	String tipus=casella.getClass().getSimpleName();
-	   
-	    	int row=i/COLUMNS;
-	    	int col =i%COLUMNS;
-	   
-	    	Text tx=new Text(tipus);
-	   
-	    	GridPane.setRowIndex(tx, row);
-	    	GridPane.setRowIndex(tx, col);
-	    }
+		for (int i = 0; i < t.getCasillas().size(); i++) {
+			Casella casella = t.getCasillas().get(i);
+			String tipus = casella.getClass().getSimpleName();
+
+			int row = i / COLUMNS;
+			int col = i % COLUMNS;
+
+			Text tx = new Text(tipus);
+			GridPane.setRowIndex(tx, row);
+			GridPane.setColumnIndex(tx, col);
+			tablero.getChildren().add(tx);
+		}
 	}
 //aaaa
 	@FXML
 	private void initialize() {
 		eventos.setText("Empezo el Juego!");
+		ArrayList<Casella> casillas = new ArrayList<>();
+	    ArrayList<Jugador> jugadors = new ArrayList<>();
+	    Pingui jugadorActual = new Pingui(0, "Jugador 1", "Blau"); // Crea un jugador, puedes cambiar el nombre si lo necesitas.
+	    jugadors.add(jugadorActual);
 
+	    // Crear el objeto Taulell con la lista de casillas, jugadores, rondas (0 en este caso), y el jugador actual
+	    Taulell t = new Taulell(casillas, jugadors, 0, jugadorActual);
+
+	    // Ahora puedes llamar a los métodos de generar y pintar el tablero
+	    generarTaulell(t);
+	    pintarTaulell(t);
 	}
 
 	private void botoGuardar() {
