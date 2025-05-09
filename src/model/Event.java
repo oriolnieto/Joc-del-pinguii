@@ -5,49 +5,14 @@ import java.util.Random;
 
 public class Event extends Casella {
 
-    private String tipoEvent;
-
-    public String getTipoEvent() {
-        return tipoEvent;
-    }
-
-    public void setTipoEvent(String tipoEvent) {
-        this.tipoEvent = tipoEvent;
-    }
-
-    public Event(int posicio, ArrayList<Jugador> jugadorsActuals, String tipoEvent) {
+    public Event(int posicio, ArrayList<Jugador> jugadorsActuals) {
         super(posicio, jugadorsActuals);
-        this.tipoEvent = tipoEvent;
     }
 
     @Override
     public void realitzarAccio() {
         Random rand = new Random();
         int numeroEvent = rand.nextInt(4); // Choose an event type
-        int probabilitat;
-        
-        // Set event type and probability
-        switch (numeroEvent) {
-            case 0:
-                tipoEvent = "Peix";
-                probabilitat = 100;
-                break;
-            case 1:
-                tipoEvent = "Boles";
-                probabilitat = 100;
-                break;
-            case 2:
-                tipoEvent = "Dau R"; // Random dice event
-                probabilitat = 10;
-                break;
-            case 3:
-                tipoEvent = "Dau L"; // Slow dice event
-                probabilitat = 100;
-                break;
-            default:
-                tipoEvent = "Unknown";
-                probabilitat = 0;
-        }
 
         int numeroRandom = rand.nextInt(101); // From 0 to 100
 
@@ -58,16 +23,16 @@ public class Event extends Casella {
                     Inventari i = p.getInv();
 
                     switch (numeroEvent) {
-                        case 0: // Peix
+                        case 0: 
                             i.getLlista().add(new Item("Peix", 1)); 
                             break;
-                        case 1: // Boles
-                            i.getLlista().add(new Item("Boles", 1)); 
+                        case 1: 
+                            i.getLlista().add(new Item("Boles", rand.nextInt(3)+1)); 
                             break;
-                        case 2: // Dau R (Dau Ràpid)
+                        case 2:
                             i.getLlista().add(new Item("Dau Ràpid", 1));
                             break;
-                        case 3: // Dau L (Dau Lent)
+                        case 3:
                             i.getLlista().add(new Item("Dau Lent", 1));
                             break;
                     }
