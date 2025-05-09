@@ -140,9 +140,7 @@ public class pantallaPartidaController {
 
 	@FXML
 	private void handleRapido(Inventari inv, Item it) {
-
-		int cantitat1 = 0;
-		for (int i = 0; i > inv.getLlista().size(); i++) {
+		for (int i = 0; i < inv.getLlista().size(); i++) {
 			if (inv.getLlista().get(i).getNom().equals("Dau Rapid")) {
 				if (inv.getLlista().get(i).getCantitat() > 0) {
 					Random rand = new Random();
@@ -160,9 +158,8 @@ public class pantallaPartidaController {
 
 	@FXML
 	private void handleLento(Inventari inv) {
-		int cantitat2 = 0;
-		for(int i = 0; i > inv.getLlista().size(); i++) {
-			if (inv.getLlista().get(i).getNom().equals("Dau Rapid")) {
+		for(int i = 0; i < inv.getLlista().size(); i++) {
+			if (inv.getLlista().get(i).getNom().equals("Dau Lent")) {
 				if (inv.getLlista().get(i).getCantitat() > 0) {
 					Random rand = new Random();
 					int diceResult = rand.nextInt(3) + 1;
@@ -186,9 +183,5 @@ public class pantallaPartidaController {
 	private void handleNieve() {
 		System.out.println("Snow.");
 		// TODO
-	}
-
-	private void handleGuardar() {
-
 	}
 }
