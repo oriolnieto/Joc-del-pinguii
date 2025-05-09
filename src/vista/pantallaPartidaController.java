@@ -129,9 +129,12 @@ public class pantallaPartidaController {
     
 
     @FXML
-    private void handleRapido(DauRapid dr) {
+    private int handleRapido(DauRapid dr) {
     	
     	int valor = dr.getCantidad();
+    	Connection conn = null;
+    	Statement stmt = null;
+    	ResultSet rs = null;
     	
     	if(valor > 0) {
     	Random rand = new Random();
@@ -143,6 +146,17 @@ public class pantallaPartidaController {
     	else {
     		eventos.setText("No tienes suficientes dados rápidos!");
     	}
+    	try {
+    		conn = DriverManager.getConnection("jdbc:oracle:thin:@//oracle.ilerna.com:1521/XEPDB2", "DM2425_PIN_GRUP03", "AAANT03");
+    		
+    		stmt = conn.createStatement();
+    		String sql = "SELECT DAUS_RAPIDS FROM INVENTARI";
+    	}
+    	catch {
+    		
+    	}
+    	
+    	return valor;
     }
     
 
