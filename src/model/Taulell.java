@@ -7,14 +7,12 @@ public class Taulell {
 	ArrayList<Casella> casillas;
 	ArrayList<Jugador> jugadors;
 	private int rondas;
-	private Jugador jugadorActual;
 	
 	
-	public Taulell(ArrayList<Casella> casillas, ArrayList<Jugador> jugadors, int rondas, Jugador jugadorActual) {
+	public Taulell(ArrayList<Casella> casillas, ArrayList<Jugador> jugadors, int rondas) {
 		this.casillas = casillas;
 		this.jugadors = jugadors;
 		this.rondas = rondas;
-		this.jugadorActual = jugadorActual;
 	}
 	public ArrayList<Casella> getCasillas() {
 		return casillas;
@@ -33,12 +31,6 @@ public class Taulell {
 	}
 	public void setRondas(int rondas) {
 		this.rondas = rondas;
-	}
-	public Jugador getJugadorActual() {
-		return jugadorActual;
-	}
-	public void setJugadorActual(Jugador jugadorActual) {
-		this.jugadorActual = jugadorActual;
 	}
 	
 	public void actualitzarTaulell () {

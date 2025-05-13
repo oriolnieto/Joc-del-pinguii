@@ -68,6 +68,8 @@ public class pantallaPartidaController {
 
 
 	private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
+	private int p2Position = 0;
+	public int numTurnos = 0;
 	private final int COLUMNS = 5;
 
 	private void generarTaulell(Taulell t) {
@@ -116,14 +118,16 @@ public class pantallaPartidaController {
 	}
 	@FXML
 	private void initialize() {
-		eventos.setText("Empezo el Juego!");
+		eventos.setText("Jugador 1 es tu turno!");
 		ArrayList<Casella> casillas = new ArrayList<>();
 	    ArrayList<Jugador> jugadors = new ArrayList<>();
-	    Pingui jugadorActual = new Pingui(0, "Jugador 1", "Blau");
-	    jugadors.add(jugadorActual);
+	    Pingui P1 = new Pingui(p1Position, "Jugador 1", "Blau");
+	    Pingui P2 = new Pingui(p2Position, "Jugador 2", "Roig");
+	    jugadors.add(P1);
+	    jugadors.add(P2);
 
 	    
-	    Taulell t = new Taulell(casillas, jugadors, 0, jugadorActual);
+	    Taulell t = new Taulell(casillas, jugadors, 0);
 
 	    generarTaulell(t);
 	    textTaulell(t);
@@ -132,23 +136,34 @@ public class pantallaPartidaController {
 	
     @FXML
 	private void botoGuardar() {
-		Random rand = new Random();
-		int diceResult = rand.nextInt(3) + 1;
 
-		moveP1(diceResult);
-		eventos.setText("Se ha usado un dado lento! Ha salido: " + diceResult);
 	}
 
 	@FXML
 	private void handleDado(ActionEvent event) {
 		Random rand = new Random();
+		
+		if(numTurnos % 2 == 0) {
 		int diceResult = rand.nextInt(6) + 1;
 
 		// Update the Text
-		dadoResultText.setText("Ha salido: " + diceResult);
+		dadoResultText.setText("Jugador 1 ha sacado: " + diceResult);
+		eventos.setText("Jugador 1 es tu turno!");
 
 		// Update the position
 		moveP1(diceResult);
+		}
+		else {
+			int diceResult = rand.nextInt(6) + 1;
+
+			// Update the Text
+			dadoResultText.setText("Jugador 2 ha sacado: " + diceResult);
+			eventos.setText("Jugador 2 es tu turno!");
+
+			// Update the position
+			moveP2(diceResult);
+		}
+		numTurnos++;
 	}
 
 	private void moveP1(int steps) {
@@ -166,6 +181,23 @@ public class pantallaPartidaController {
 		// Change P1 property to match row and column
 		GridPane.setRowIndex(P1, row);
 		GridPane.setColumnIndex(P1, col);
+	}
+	
+	private void moveP2(int steps) {
+		p2Position += steps;
+
+		// Bound player
+		if (p2Position >= 50) {
+			p2Position = 49; // 5 columns * 10 rows = 50 cells (index 0 to 49)
+		}
+
+		// Check row and column
+		int row = p2Position / COLUMNS;
+		int col = p2Position % COLUMNS;
+
+		// Change P1 property to match row and column
+		GridPane.setRowIndex(P2, row);
+		GridPane.setColumnIndex(P2, col);
 	}
 
 	@FXML
