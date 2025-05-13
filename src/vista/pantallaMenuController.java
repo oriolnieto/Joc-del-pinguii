@@ -35,6 +35,5 @@ public class pantallaMenuController {
     }
     public void botoCarregarPartida (ActionEvent event) throws IOException {
     	carregar = true;
-    	
     }
 }

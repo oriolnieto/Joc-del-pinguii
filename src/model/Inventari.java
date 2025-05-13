@@ -13,6 +13,4 @@ public class Inventari {
 	public void setLlista(ArrayList<Item> llista) {
 		this.llista = llista;
 	}
-	
-	
 }

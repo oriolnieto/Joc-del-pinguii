@@ -8,9 +8,6 @@ public class gestorJugador {
 	public void UtilitzarItem(String nombreitem) {
 		
 	}
-	public void JugadorEsMou(Jugador j) {
-		
-	}
 	public void FinalitzaTorn(Jugador j) {
 		
 	}

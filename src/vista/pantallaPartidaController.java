@@ -78,7 +78,6 @@ public class pantallaPartidaController {
 			int numRand = rand.nextInt(4) + 1;
 			if (numRand == 1) {
 				t.getCasillas().add(new Os(i, new ArrayList<Jugador>()));
-
 			} else if (numRand == 2) {
 				t.getCasillas().add(new Forat(i, new ArrayList<Jugador>()));
 			} else if (numRand == 3) {
@@ -90,7 +89,8 @@ public class pantallaPartidaController {
 		t.getCasillas().add(new CasellaBuida(50, new ArrayList<Jugador>()));
 
 	}
-
+	
+	
 	private void textTaulell(Taulell t) {
 		for (int i = 0; i < t.getCasillas().size(); i++) {
 			Casella casella = t.getCasillas().get(i);
@@ -128,7 +128,9 @@ public class pantallaPartidaController {
 	    generarTaulell(t);
 	    textTaulell(t);
 	}
-
+	
+	
+    @FXML
 	private void botoGuardar() {
 		Random rand = new Random();
 		int diceResult = rand.nextInt(3) + 1;

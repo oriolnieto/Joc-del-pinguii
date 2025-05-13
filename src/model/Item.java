@@ -22,5 +22,4 @@ public class Item {
 	public void setCantitat(int cantitat) {
 		this.cantitat = cantitat;
 	}
-	
 }

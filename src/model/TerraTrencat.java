@@ -31,6 +31,5 @@ public class TerraTrencat extends Casella {
 				j.setPosicio(0);
 			}
 		}
-		
 	}
 }

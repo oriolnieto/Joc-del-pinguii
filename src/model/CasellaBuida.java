@@ -12,6 +12,6 @@ public class CasellaBuida extends Casella {
 
 	@Override
 	public void realitzarAccio( ) {
-		
+		/* res perque esta buida.  */
 	}
 }
