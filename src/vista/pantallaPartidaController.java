@@ -146,7 +146,7 @@ public class pantallaPartidaController {
 		if(numTurnos % 2 == 0) {
 		int diceResult = rand.nextInt(6) + 1;
 
-		// Update the Text
+		// Update the Text-
 		dadoResultText.setText("Jugador 1 ha sacado: " + diceResult);
 		eventos.setText("Jugador 1 es tu turno!");
 
