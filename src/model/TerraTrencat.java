@@ -1,13 +1,17 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TerraTrencat extends Casella {
+
 
 	public TerraTrencat(int posicio, ArrayList<Jugador> jugadorsActuals) {
 		super(posicio, jugadorsActuals);
 		
 	}
+	
+	Random rand = new Random();
 
 	@Override
 	public void realitzarAccio() {
@@ -31,5 +35,14 @@ public class TerraTrencat extends Casella {
 				j.setPosicio(0);
 			}
 		}
-	}
+		else if (cantidadInv == 0) {
+			for(Jugador j : this.jugadorsActuals) {
+					if(j instanceof Pingui) {
+						Pingui p = (Pingui)j;
+				     int numeroRandom = rand.nextInt(cantidadInv);
+				     p.treureItem(i);
+					}
+				}			    
+			}
+		}
 }

@@ -25,8 +25,8 @@ public class Pingui extends Jugador {
 	public void utilitzarObjecte(Item i) {
 		treureItem(i);
 	}
-	public void afegirItem() {
-		inv.getLlista().add(null);
+	public void afegirItem(Item i) {
+		inv.getLlista().add(i);
 	}
 	public void treureItem(Item i) {
 		inv.getLlista().remove(i);

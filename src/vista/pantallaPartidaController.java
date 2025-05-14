@@ -131,8 +131,44 @@ public class pantallaPartidaController {
 
 	    generarTaulell(t);
 	    textTaulell(t);
+	    
+	 
+	    
+	    if (p1Position == p2Position && p1Position == 0) {
+	    	int quantitatBolesP1 = 0;
+	   	    int quantitatBolesP2 = 0;
+	   	    int diferenciaBoles = 0;
+	   	    
+	    	for (int i = 0; i < P1.getInv().getLlista().size(); i++) {
+				if (P1.getInv().getLlista().get(i).getNom().equals("Boles")) {
+					if (P1.getInv().getLlista().get(i).getCantitat() > 0) {
+						quantitatBolesP1++;
+						P1.getInv().getLlista().remove(i);
+					}
+				}
+	    	}
+	    	
+	    	for (int i = 0; i < P2.getInv().getLlista().size(); i++) {
+				if (P2.getInv().getLlista().get(i).getNom().equals("Boles")) {
+					if (P2.getInv().getLlista().get(i).getCantitat() > 0) {
+						quantitatBolesP2++;
+						P2.getInv().getLlista().remove(i);
+					}
+				}
+	    	}
+	    	
+	    	if(quantitatBolesP1 > quantitatBolesP2) {
+	    		eventos.setText("Ha ganado la batalla el Jugador 1!");
+	    		diferenciaBoles = quantitatBolesP1 - quantitatBolesP2;
+	    		moveP1(diferenciaBoles);
+	    	}
+	    	else {
+	    		eventos.setText("Ha ganado la batalla el Jugador 2!");
+	    		diferenciaBoles = quantitatBolesP2 - quantitatBolesP1;
+	    		moveP2(diferenciaBoles);
+	    	}
+	    	}
 	}
-	
 	
     @FXML
 	private void botoGuardar() {
