@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 import model.Casella;
 import model.CasellaBuida;
 import model.Event;
+import model.Foca;
 import model.Forat;
 import model.Inventari;
 import model.Item;
@@ -65,10 +66,13 @@ public class pantallaPartidaController {
 	private Circle P3;
 	@FXML
 	private Circle P4;
+	@FXML
+	private Circle F;
 
 
 	private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
 	private int p2Position = 0;
+	private int focaPosition = 0;
 	public int numTurnos = 0;
 	private final int COLUMNS = 5;
 
@@ -123,8 +127,10 @@ public class pantallaPartidaController {
 	    ArrayList<Jugador> jugadors = new ArrayList<>();
 	    Pingui P1 = new Pingui(p1Position, "Jugador 1", "Blau");
 	    Pingui P2 = new Pingui(p2Position, "Jugador 2", "Roig");
+	    Foca F = new Foca(focaPosition, "Foca CPU", "Gris", false);
 	    jugadors.add(P1);
 	    jugadors.add(P2);
+	    jugadors.add(F);
 
 	    
 	    Taulell t = new Taulell(casillas, jugadors, 0);

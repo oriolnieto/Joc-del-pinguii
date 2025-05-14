@@ -159,20 +159,20 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inicio" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inicio" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                      <GridPane.margin>
-                        <Insets right="10.0" top="5.0" />
+                        <Insets right="10.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="30.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="20.0" />
                      </font>
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
@@ -186,14 +186,19 @@
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin></Circle>
-                  <Circle fx:id="P3" fill="GREEN" radius="15.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                  <Circle fx:id="P3" fill="GREEN" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <GridPane.margin>
                         <Insets left="80.0" />
                      </GridPane.margin></Circle>
-                  <Circle fx:id="P4" fill="YELLOW" radius="15.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                  <Circle fx:id="P4" fill="YELLOW" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <GridPane.margin>
                         <Insets left="120.0" />
                      </GridPane.margin></Circle>
+                  <Circle fx:id="F" fill="#7f807f" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                     <GridPane.margin>
+                        <Insets left="160.0" />
+                     </GridPane.margin>
+                  </Circle>
                </children>
             </GridPane>
          </center>
