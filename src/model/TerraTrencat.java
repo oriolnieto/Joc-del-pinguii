@@ -35,12 +35,12 @@ public class TerraTrencat extends Casella {
 				j.setPosicio(0);
 			}
 		}
-		else if (cantidadInv == 0) {
+		else if (cantidadInv == 0) { // events alternatius
 			for(Jugador j : this.jugadorsActuals) {
 					if(j instanceof Pingui) {
 						Pingui p = (Pingui)j;
 				     int numeroRandom = rand.nextInt(cantidadInv);
-				     p.treureItem(i);
+				     p.getInv().getLlista().remove(numeroRandom);
 					}
 				}			    
 			}

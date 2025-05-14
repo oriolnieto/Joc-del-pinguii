@@ -133,7 +133,7 @@ public class pantallaPartidaController {
 	    textTaulell(t);
 	    
 	 
-	    
+	     // ficar tot esto en la seua funcio y que ho comprobi a cada torn
 	    if (p1Position == p2Position && p1Position == 0) {
 	    	int quantitatBolesP1 = 0;
 	   	    int quantitatBolesP2 = 0;
@@ -162,10 +162,13 @@ public class pantallaPartidaController {
 	    		diferenciaBoles = quantitatBolesP1 - quantitatBolesP2;
 	    		moveP1(diferenciaBoles);
 	    	}
-	    	else {
+	    	else if (quantitatBolesP2 > quantitatBolesP1){
 	    		eventos.setText("Ha ganado la batalla el Jugador 2!");
 	    		diferenciaBoles = quantitatBolesP2 - quantitatBolesP1;
 	    		moveP2(diferenciaBoles);
+	    	}
+	    	else {
+	    		eventos.setText("Ha habido un empate de bolas entre ambos jugadores!");
 	    	}
 	    	}
 	}
