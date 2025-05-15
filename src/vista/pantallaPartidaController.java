@@ -126,8 +126,11 @@ public class pantallaPartidaController {
 		ArrayList<Casella> casillas = new ArrayList<>();
 	    ArrayList<Jugador> jugadors = new ArrayList<>();
 	    Pingui P1 = new Pingui(p1Position, "Jugador 1", "Blau");
+	    Inventari I1 = new Inventari(null);
 	    Pingui P2 = new Pingui(p2Position, "Jugador 2", "Roig");
+	    Inventari I2 = new Inventari(null);
 	    Foca F = new Foca(focaPosition, "Foca CPU", "Gris", false);
+	    
 	    jugadors.add(P1);
 	    jugadors.add(P2);
 	    jugadors.add(F);
