@@ -25,11 +25,4 @@ public abstract class Casella {
 		this.jugadorsActuals = jugadorsActuals;
 	}
 	public abstract void realitzarAccio();
-	
-	public void afegirJugador(Jugador j) {
-		
-	}
-	public void treureJugador(Jugador j) {
-		
-	}
 }

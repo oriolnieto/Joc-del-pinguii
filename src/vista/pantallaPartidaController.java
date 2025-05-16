@@ -68,13 +68,22 @@ public class pantallaPartidaController {
 	private Circle P1;
 	@FXML
 	private Circle P2;
+	
+	public int getP1Position() {
+		return p1Position;
+	}
+
+	public void setP1Position(int p1Position) {
+		this.p1Position = p1Position;
+	}
+
 	@FXML
 	private Circle P3;
 	@FXML
 	private Circle P4;
 
 
-	private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
+	private int p1Position = 0;
 	private final int COLUMNS = 5;
 
 	private void generarTaulell(Taulell t) {
@@ -123,7 +132,6 @@ public class pantallaPartidaController {
 	}
 	@FXML
 	private void initialize() {
-		eventos.setText("Jugador 1 es tu turno!");
 		ArrayList<Casella> casillas = new ArrayList<>();
 	    ArrayList<Jugador> jugadors = new ArrayList<>();
 	    Pingui P1 = new Pingui(p1Position, "Jugador 1", "Blau");
@@ -133,8 +141,7 @@ public class pantallaPartidaController {
 	    Taulell t = new Taulell(casillas, jugadors, 0);
 
 	    generarTaulell(t);
-	    textTaulell(t);
-	    
+	    textTaulell(t);    
 	}
 	
     @FXML
@@ -160,12 +167,17 @@ public class pantallaPartidaController {
 		if (p1Position >= 50) {
 			p1Position = 49;
 		}
-
+		
 		int row = p1Position / COLUMNS;
 		int col = p1Position % COLUMNS;
 
 		GridPane.setRowIndex(P1, row);
 		GridPane.setColumnIndex(P1, col);
+		
+	    if(p1Position == 49) {
+	    	eventos.setText("Jugador 1 ha Ganado!");
+	    }
+	
 	}
 	
 

@@ -32,14 +32,4 @@ public class Taulell {
 	public void setRondas(int rondas) {
 		this.rondas = rondas;
 	}
-	
-	public void actualitzarTaulell () {
-		
-	}
-	
-	
-	public void actualitzarJugador (Jugador j) {
-		
-	}
-	
 }

@@ -12,7 +12,6 @@ public class Trineu extends Casella{
 
 	@Override
 	public void realitzarAccio() {
-		
 		/*
 		for(int i = super.getPosicio()+1; 50 > i; i++) {
 			if(Taulell.getCasillas[i] instanceof Trineu) {

@@ -11,8 +11,7 @@ public class MotoDeNeu extends Casella{
 	
 
 	@Override
-	public void realitzarAccio() {
-		
+	public void realitzarAccio() {	
 		/*
 		for(int i = super.getPosicio()+1; 50 > i; i++) {
 			if(Taulell.getCasillas[i] instanceof Trineu) {

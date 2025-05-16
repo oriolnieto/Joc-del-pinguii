@@ -35,7 +35,9 @@ public class TerraTrencat extends Casella {
 				j.setPosicio(0);
 			}
 		}
-		else if (cantidadInv == 0) { // events alternatius
+		
+		/*
+		else if (cantidadInv == 0) {
 			for(Jugador j : this.jugadorsActuals) {
 					if(j instanceof Pingui) {
 						Pingui p = (Pingui)j;
@@ -43,6 +45,7 @@ public class TerraTrencat extends Casella {
 				     p.getInv().getLlista().remove(numeroRandom);
 					}
 				}			    
-			}
+			}  per a events alternatius
+			*/ 
 		}
 }

@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 public class pantallaMenuController {
     public boolean carregar = false;
 	 public void botoSortir(ActionEvent event) throws IOException {
-
          Parent root = FXMLLoader.load(getClass().getResource("/pantallaLogin.fxml"));
          Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
          stage.setScene(new Scene(root));
