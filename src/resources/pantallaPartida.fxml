@@ -180,7 +180,7 @@
                   </Text>
                   <Circle fx:id="P1" fill="#00a0ff" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <GridPane.margin>
-                        <Insets />
+                        <Insets left="10.0" />
                      </GridPane.margin></Circle>
                   <Circle fx:id="P2" fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                      <GridPane.margin>
