@@ -1,5 +1,6 @@
 package vista;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,10 +11,15 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.Casella;
 import model.CasellaBuida;
 import model.Event;
@@ -66,14 +72,9 @@ public class pantallaPartidaController {
 	private Circle P3;
 	@FXML
 	private Circle P4;
-	@FXML
-	private Circle F;
 
 
 	private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
-	private int p2Position = 0;
-	private int focaPosition = 0;
-	public int numTurnos = 0;
 	private final int COLUMNS = 5;
 
 	private void generarTaulell(Taulell t) {
@@ -126,64 +127,18 @@ public class pantallaPartidaController {
 		ArrayList<Casella> casillas = new ArrayList<>();
 	    ArrayList<Jugador> jugadors = new ArrayList<>();
 	    Pingui P1 = new Pingui(p1Position, "Jugador 1", "Blau");
-	    Inventari I1 = new Inventari(null);
-	    Pingui P2 = new Pingui(p2Position, "Jugador 2", "Roig");
-	    Inventari I2 = new Inventari(null);
-	    Foca F = new Foca(focaPosition, "Foca CPU", "Gris", false);
 	    
 	    jugadors.add(P1);
-	    jugadors.add(P2);
-	    jugadors.add(F);
-
 	    
 	    Taulell t = new Taulell(casillas, jugadors, 0);
 
 	    generarTaulell(t);
 	    textTaulell(t);
 	    
-	 
-	     // ficar tot esto en la seua funcio y que ho comprobi a cada torn
-	    if (p1Position == p2Position && p1Position == 0) {
-	    	int quantitatBolesP1 = 0;
-	   	    int quantitatBolesP2 = 0;
-	   	    int diferenciaBoles = 0;
-	   	    
-	    	for (int i = 0; i < P1.getInv().getLlista().size(); i++) {
-				if (P1.getInv().getLlista().get(i).getNom().equals("Boles")) {
-					if (P1.getInv().getLlista().get(i).getCantitat() > 0) {
-						quantitatBolesP1++;
-						P1.getInv().getLlista().remove(i);
-					}
-				}
-	    	}
-	    	
-	    	for (int i = 0; i < P2.getInv().getLlista().size(); i++) {
-				if (P2.getInv().getLlista().get(i).getNom().equals("Boles")) {
-					if (P2.getInv().getLlista().get(i).getCantitat() > 0) {
-						quantitatBolesP2++;
-						P2.getInv().getLlista().remove(i);
-					}
-				}
-	    	}
-	    	
-	    	if(quantitatBolesP1 > quantitatBolesP2) {
-	    		eventos.setText("Ha ganado la batalla el Jugador 1!");
-	    		diferenciaBoles = quantitatBolesP1 - quantitatBolesP2;
-	    		moveP1(diferenciaBoles);
-	    	}
-	    	else if (quantitatBolesP2 > quantitatBolesP1){
-	    		eventos.setText("Ha ganado la batalla el Jugador 2!");
-	    		diferenciaBoles = quantitatBolesP2 - quantitatBolesP1;
-	    		moveP2(diferenciaBoles);
-	    	}
-	    	else {
-	    		eventos.setText("Ha habido un empate de bolas entre ambos jugadores!");
-	    	}
-	    	}
 	}
 	
     @FXML
-	private void botoGuardar() {
+	private void botoGuardar(ActionEvent event) throws IOException {
 
 	}
 
@@ -191,62 +146,28 @@ public class pantallaPartidaController {
 	private void handleDado(ActionEvent event) {
 		Random rand = new Random();
 		
-		if(numTurnos % 2 == 0) {
 		int diceResult = rand.nextInt(6) + 1;
 
-		// Update the Text-
 		dadoResultText.setText("Jugador 1 ha sacado: " + diceResult);
-		eventos.setText("Jugador 1 es tu turno!");
 
-		// Update the position
 		moveP1(diceResult);
-		}
-		else {
-			int diceResult = rand.nextInt(6) + 1;
-
-			// Update the Text
-			dadoResultText.setText("Jugador 2 ha sacado: " + diceResult);
-			eventos.setText("Jugador 2 es tu turno!");
-
-			// Update the position
-			moveP2(diceResult);
-		}
-		numTurnos++;
+		
 	}
 
 	private void moveP1(int steps) {
 		p1Position += steps;
 
-		// Bound player
 		if (p1Position >= 50) {
-			p1Position = 49; // 5 columns * 10 rows = 50 cells (index 0 to 49)
+			p1Position = 49;
 		}
 
-		// Check row and column
 		int row = p1Position / COLUMNS;
 		int col = p1Position % COLUMNS;
 
-		// Change P1 property to match row and column
 		GridPane.setRowIndex(P1, row);
 		GridPane.setColumnIndex(P1, col);
 	}
 	
-	private void moveP2(int steps) {
-		p2Position += steps;
-
-		// Bound player
-		if (p2Position >= 50) {
-			p2Position = 49; // 5 columns * 10 rows = 50 cells (index 0 to 49)
-		}
-
-		// Check row and column
-		int row = p2Position / COLUMNS;
-		int col = p2Position % COLUMNS;
-
-		// Change P1 property to match row and column
-		GridPane.setRowIndex(P2, row);
-		GridPane.setColumnIndex(P2, col);
-	}
 
 	@FXML
 	private void handleRapido(Inventari inv) {
